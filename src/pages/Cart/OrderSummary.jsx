@@ -1,11 +1,17 @@
 import React from 'react'
+import AddressCard from '../../organism/CartEssentials/AddressCard'
 import CartItemCards from '../../organism/CartEssentials/CartItemCards'
 import { Button, Divider } from '@mui/material'
 
-function Cart() {
-  return (
-    <div>
-      <div className='lg:grid grid-cols-3 lg:px-16 relative'>
+function OrderSummary() {
+    return (
+        <div>
+            <div className='p-5 shadow-lg rounded-s-md border'>
+                <AddressCard />
+            </div>
+
+            <div>
+      <div className='lg:grid grid-cols-3 mt-10 relative'>
         <div className='col-span-2'>
 
           {[1,1,1,1].map((item)=><CartItemCards />)}
@@ -47,7 +53,8 @@ function Cart() {
         </div>
       </div>
     </div>
-  )
+        </div>
+    )
 }
 
-export default Cart
+export default OrderSummary
