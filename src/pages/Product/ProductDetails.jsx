@@ -1,12 +1,12 @@
 
 import { useState } from 'react'
-import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { Box, Grid, LinearProgress, Rating } from '@mui/material'
 import Button from '@mui/material/Button';
 import ProductReviewCard from '../../organism/productCard/ProductReviewCard';
 import HomeSectionCard from "../../organism/HomeSectionCards/HomeSectionCard";
 import { mens_kurta } from "../../assets/Mens/Mens_Kurta"
+import { useNavigate } from 'react-router-dom';
 
 const product = {
     name: 'Basic Tee 6-Pack',
@@ -62,9 +62,18 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+
+
 export default function ProductDetails() {
     const [selectedColor, setSelectedColor] = useState(product.colors[0])
     const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+const navigate=useNavigate();
+
+
+
+    const handleAddToCart=()=>{
+    navigate("/cart")
+    }
 
     return (
         <div className="bg-white lg:px-20">
@@ -203,7 +212,7 @@ export default function ProductDetails() {
                                 </div>
 
                                 <div className='flex items-start'>
-                                    <Button variant="contained"
+                                    <Button onClick={handleAddToCart} variant="contained"
                                         sx={{ px: "2rem", py: "1rem", bgcolor: "#9155fd", mt: "2rem" }}>
                                         Add to Cart
                                     </Button>

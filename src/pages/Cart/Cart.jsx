@@ -1,8 +1,16 @@
 import React from 'react'
 import CartItemCards from '../../organism/CartEssentials/CartItemCards'
 import { Button, Divider } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 function Cart() {
+const navigate=useNavigate();
+
+const handleCheckout=()=>{
+  navigate("/checkout?step=2")
+}
+
+
   return (
     <div>
       <div className='lg:grid grid-cols-3 lg:px-16 relative'>
@@ -39,7 +47,8 @@ function Cart() {
             </div>
             <Button variant="contained"
             fullWidth
-              sx={{ px: "2..5rem", py: "0.7rem", bgcolor: "#9155fd", mt: "2rem" }}>
+onClick={handleCheckout}
+sx={{ px: "2..5rem", py: "0.7rem", bgcolor: "#9155fd", mt: "2rem" }}>
               Checkout
             </Button>
           </div>

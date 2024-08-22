@@ -9,8 +9,9 @@ import {
 
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
-import {navigation} from "./navigation"
+import { navigation } from "./navigation"
 import { Link } from "react-alice-carousel";
+import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -22,6 +23,7 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
   const jwt = localStorage.getItem("jwt");
+  const navigate = useNavigate();
 
 
 
@@ -40,12 +42,14 @@ export default function Navbar() {
   };
 
   const handleCategoryClick = (category, section, item, close) => {
-    // navigate(`/${category.id}/${section.id}/${item.id}`);
+    navigate(`/${category.id}/${section.id}/${item.id}`); // Use backticks for string interpolation
     close();
   };
 
 
 
+
+  console.log("navigation", navigation);
 
 
   return (
@@ -238,7 +242,8 @@ export default function Navbar() {
                   <img
                     src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png"
                     alt="Shopwithzosh"
-                    className="h-8 w-8 mr-2"
+                    className="h-8 w-8 mr-2 cursor-pointer"
+                    onClick={() => navigate("/")}
                   />
                 </Link>
               </div>
@@ -412,7 +417,7 @@ export default function Navbar() {
                         }}
                       >
                         <MenuItem >Profile</MenuItem>
-                        <MenuItem >My Orders</MenuItem>
+                        <MenuItem onClick={() => navigate("/account/order")}>My Orders</MenuItem>
 
 
                         <MenuItem >Logout</MenuItem>
